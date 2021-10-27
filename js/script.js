@@ -1,17 +1,21 @@
 const imagens = document.getElementsByTagName("img");
 let posicaoFoto = 1;
-let loop;
+let intervalo;
 const botaoPauseStart = document.getElementById("pauseStart");
+const loop = function () {
+    if (botaoPauseStart.value !== "▶") {
+        intervalo = setInterval(trocarClasse, 3000);
+    }
+}
 botaoPauseStart.onclick = function () {
     if (botaoPauseStart.value === "| |") {
-        clearInterval(loop);
-        botaoPauseStart.value = "▶"
+        botaoPauseStart.value = "▶";
+        clearInterval(intervalo);
     }
     else{
-        loop = setInterval(trocarClasse, 3000);
-        botaoPauseStart.value = "| |"
+        botaoPauseStart.value = "| |";
+        loop();
     }
-
 }
 const setas = function () {
     const setasAvancarRetornar = ["avancar", "retornar"];
@@ -46,7 +50,7 @@ const adicionaClickBotoes = function () {
     }
 }
 const clickBotao = function (i, setaEspecifica) {
-    clearInterval(loop);
+    clearInterval(intervalo);
     if (setaEspecifica === "retornar") {
         i = (i === 1) ? imagens.length : i - 2;
         i = (i === imagens.length) ? resetar(setaEspecifica) : i;
@@ -61,7 +65,7 @@ const clickBotao = function (i, setaEspecifica) {
     }
     posicaoFoto = i;
     trocarClasse();
-    loop = setInterval(trocarClasse, 3000);
+    loop();
 }
 const focarBotao = function (posicaoBotao = posicaoFoto) {
     if (posicaoBotao === 1) {
@@ -82,7 +86,7 @@ const start = function () {
     for (let i = 1; i < imagens.length; i++) { //Esconder imagens no inicio.
         imagens[i].style.display = 'none';
     }
-    loop = setInterval(trocarClasse, 3000);
+    loop();
 }
 const trocarClasse = function () {
     if (posicaoFoto === imagens.length) {
