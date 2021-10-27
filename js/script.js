@@ -61,7 +61,6 @@ const clickBotao = function (i, setaEspecifica) {
         i = (i > imagens.length) ? 1 : (i < 1) ? imagens.length : i;
         imagens[posicaoFoto - 1].style.display = 'none';
         document.getElementById(`btn${posicaoFoto}`).classList.remove("botaoSelecionado");
-        // imagens[i].style.display = 'block';
     }
     posicaoFoto = i;
     trocarClasse();
@@ -112,31 +111,4 @@ const resetar = function (setaEspecifica = "inutilizavel") {
         focarBotao();
     } 
 }
-
 start();
-//     for (let i = 0; i < imagens.length; i++) {
-//         bodyHtml.children[i] = "<input type ='button' id = 'imagens[i]'></input>";
-//     }
-// }
-//     for (let i = 0; i < imagensClasses.length; i++) {
-//         setInterval(function() {
-//             bodyHtml.classList.remove(imagensClasses[i]);
-//             bodyHtml.classList.add(imagensClasses[i + 1]);
-//         }, 3000);
-//     }   
-// }
-// setInterval(trocaClasse, 3000);
-//     setTimeout(function() {
-//         if (bodyHtml.classList.contains("imagemDois")) {
-//             bodyHtml.classList.remove("imagemDois");
-//             bodyHtml.classList.add("imagemZero");
-//         }
-//     }, 9000);
-// }
-// const trocaClasse = function () {
-//     for (let i = 0; i < imagensClasses.length; i++) {
-// bodyHtml.classList.remove(imagensClasses[i]);
-// bodyHtml.classList.add(imagensClasses[i + 1]);
-//         return;
-//     }
-// }
